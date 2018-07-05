@@ -2,6 +2,7 @@
     <div>
       <div id="header">
           <div>
+              <img src="../assets/logo.png">
               <h1>Vue.js Calendar</h1>
           </div>
           <div>
@@ -29,6 +30,7 @@
     import CurrentMonth from './CurrentMonth.vue';
     import CalendarDay from './CalendarDay.vue';
     import EventForm from './EventForm.vue';
+
     export default {
       computed: {
         month() {
@@ -38,6 +40,7 @@
           return this.$store.state.currentYear;
         },
         days() {
+
           // Generating current days of the month
           let days = [];
           let currentDay = this.$moment(`${this.year}-${this.month}-1`, 'YYYY-M-D');
@@ -51,6 +54,7 @@
 
             const SUNDAY = 0;
             const MONDAY = 1;
+
             if(currentDay.day() !== MONDAY) {
               do {
                 currentDay = this.$moment(currentDay).subtract(1, 'days');
@@ -67,6 +71,7 @@
                 days.push(currentDay)
               } while(currentDay.day() !== SUNDAY);
             }
+
             return days;
         },
         weeks() {
